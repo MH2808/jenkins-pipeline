@@ -1,0 +1,306 @@
+Started by user Misha Huda
+Obtained jenkins_pipeline/Jenkinsfile from git https://github.com/MH2808/jenkins-pipeline.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/jenkins-pipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/jenkins-pipeline/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/MH2808/jenkins-pipeline.git # timeout=10
+Fetching upstream changes from https://github.com/MH2808/jenkins-pipeline.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.25.1'
+ > git fetch --tags --force --progress -- https://github.com/MH2808/jenkins-pipeline.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision 5587d670902791f40abe346d85c1665acaea93a3 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 5587d670902791f40abe346d85c1665acaea93a3 # timeout=10
+Commit message: "Update Jenkinsfile"
+ > git rev-list --no-walk 1681d6dfd3a66dfe0fc28af6eb9b86d09341424b # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Prepare)
+[Pipeline] echo
+Installing Node.js version 22...
+[Pipeline] sh
++ sudo lsof -t /var/lib/dpkg/lock-frontend
++ sudo kill -9
+
+Usage:
+ kill [options] <pid> [...]
+
+Options:
+ <pid> [...]            send signal to every <pid> listed
+ -<signal>, -s, --signal <signal>
+                        specify the <signal> to be sent
+ -l, --list=[<signal>]  list all signal names, or convert one to a name
+ -L, --table            list all signal names in a nice table
+
+ -h, --help     display this help and exit
+ -V, --version  output version information and exit
+
+For more details see kill(1).
++ true
++ sudo rm /var/lib/dpkg/lock-frontend
++ sudo rm /var/lib/dpkg/lock
++ sudo dpkg --configure -a
++ sudo -E bash -
++ curl -sL https://deb.nodesource.com/setup_22.x
+[38;5;79m2025-03-31 12:43:09 - Installing pre-requisites[0m
+Hit:1 https://deb.nodesource.com/node_18.x nodistro InRelease
+Hit:2 http://security.ubuntu.com/ubuntu focal-security InRelease
+Hit:3 http://us.archive.ubuntu.com/ubuntu focal InRelease
+Ign:4 https://pkg.jenkins.io/debian binary/ InRelease
+Hit:5 http://us.archive.ubuntu.com/ubuntu focal-updates InRelease
+Hit:6 https://pkg.jenkins.io/debian binary/ Release
+Hit:7 http://us.archive.ubuntu.com/ubuntu focal-backports InRelease
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+ca-certificates is already the newest version (20240203~20.04.1).
+ca-certificates set to manually installed.
+curl is already the newest version (7.68.0-1ubuntu2.25).
+gnupg is already the newest version (2.2.19-3ubuntu2.2).
+apt-transport-https is already the newest version (2.0.10).
+The following packages were automatically installed and are no longer required:
+  gyp libc-ares2 libjs-inherits libjs-is-typedarray libjs-psl
+  libjs-typedarray-to-buffer libpython2-stdlib libpython2.7-minimal
+  libpython2.7-stdlib libssl-dev libuv1-dev node-abbrev node-ajv node-ansi
+  node-ansi-align node-ansi-regex node-ansi-styles node-ansistyles node-aproba
+  node-archy node-are-we-there-yet node-asap node-asn1 node-assert-plus
+  node-asynckit node-aws-sign2 node-aws4 node-balanced-match node-bcrypt-pbkdf
+  node-bl node-bluebird node-boxen node-brace-expansion node-builtin-modules
+  node-builtins node-cacache node-call-limit node-camelcase node-caseless
+  node-chalk node-chownr node-ci-info node-cli-boxes node-cliui node-clone
+  node-co node-color-convert node-color-name node-colors node-columnify
+  node-combined-stream node-concat-map node-concat-stream node-config-chain
+  node-configstore node-console-control-strings node-copy-concurrently
+  node-core-util-is node-cross-spawn node-crypto-random-string node-cyclist
+  node-dashdash node-debug node-decamelize node-decompress-response
+  node-deep-extend node-defaults node-define-properties node-delayed-stream
+  node-delegates node-detect-indent node-detect-newline node-dot-prop
+  node-duplexer3 node-duplexify node-ecc-jsbn node-editor node-encoding
+  node-end-of-stream node-err-code node-errno node-es6-promise
+  node-escape-string-regexp node-execa node-extend node-extsprintf
+  node-fast-deep-equal node-find-up node-flush-write-stream node-forever-agent
+  node-form-data node-from2 node-fs-vacuum node-fs-write-stream-atomic
+  node-fs.realpath node-function-bind node-gauge node-genfun
+  node-get-caller-file node-get-stream node-getpass node-glob node-got
+  node-graceful-fs node-har-schema node-har-validator node-has-flag
+  node-has-symbol-support-x node-has-to-string-tag-x node-has-unicode
+  node-hosted-git-info node-http-signature node-iconv-lite node-iferr
+  node-import-lazy node-imurmurhash node-inflight node-inherits node-ini
+  node-invert-kv node-ip node-ip-regex node-is-npm node-is-obj node-is-object
+  node-is-path-inside node-is-plain-obj node-is-retry-allowed node-is-stream
+  node-is-typedarray node-isarray node-isexe node-isstream node-isurl
+  node-jsbn node-json-parse-better-errors node-json-schema
+  node-json-schema-traverse node-json-stable-stringify
+  node-json-stringify-safe node-jsonify node-jsonparse node-jsonstream
+  node-jsprim node-latest-version node-lazy-property node-lcid node-libnpx
+  node-locate-path node-lockfile node-lodash node-lodash-packages
+  node-lowercase-keys node-lru-cache node-make-dir node-mem node-mime
+  node-mime-types node-mimic-fn node-mimic-response node-minimatch
+  node-minimist node-mississippi node-mkdirp node-move-concurrently node-ms
+  node-mute-stream node-nopt node-normalize-package-data node-npm-bundled
+  node-npm-package-arg node-npm-run-path node-npmlog node-number-is-nan
+  node-oauth-sign node-object-assign node-once node-opener node-os-locale
+  node-os-tmpdir node-osenv node-p-cancelable node-p-finally node-p-is-promise
+  node-p-limit node-p-locate node-p-timeout node-package-json
+  node-parallel-transform node-path-exists node-path-is-absolute
+  node-path-is-inside node-performance-now node-pify node-prepend-http
+  node-process-nextick-args node-promise-inflight node-promise-retry
+  node-promzard node-proto-list node-prr node-pseudomap node-psl node-pump
+  node-pumpify node-punycode node-qs node-qw node-rc node-read
+  node-read-package-json node-readable-stream node-registry-auth-token
+  node-registry-url node-request node-require-directory
+  node-require-main-filename node-resolve node-resolve-from node-retry
+  node-rimraf node-run-queue node-safe-buffer node-semver node-semver-diff
+  node-set-blocking node-sha node-shebang-command node-shebang-regex
+  node-signal-exit node-slash node-slide node-sorted-object node-spdx-correct
+  node-spdx-exceptions node-spdx-expression-parse node-spdx-license-ids
+  node-sshpk node-ssri node-stream-each node-stream-iterate node-stream-shift
+  node-strict-uri-encode node-string-decoder node-string-width node-strip-ansi
+  node-strip-eof node-strip-json-comments node-supports-color node-tar
+  node-term-size node-text-table node-through node-through2 node-timed-out
+  node-tough-cookie node-tunnel-agent node-tweetnacl node-typedarray
+  node-typedarray-to-buffer node-uid-number node-unique-filename
+  node-unique-string node-unpipe node-uri-js node-url-parse-lax
+  node-url-to-options node-util-deprecate node-uuid
+  node-validate-npm-package-license node-validate-npm-package-name node-verror
+  node-wcwidth.js node-which node-which-module node-wide-align
+  node-widest-line node-wrap-ansi node-wrappy node-write-file-atomic
+  node-xdg-basedir node-xtend node-y18n node-yallist node-yargs
+  node-yargs-parser python-pkg-resources python2 python2-minimal python2.7
+  python2.7-minimal
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 496 not upgraded.
+Hit:1 http://security.ubuntu.com/ubuntu focal-security InRelease
+Hit:2 http://us.archive.ubuntu.com/ubuntu focal InRelease
+Get:3 https://deb.nodesource.com/node_22.x nodistro InRelease [12.1 kB]
+Ign:4 https://pkg.jenkins.io/debian binary/ InRelease
+Hit:5 http://us.archive.ubuntu.com/ubuntu focal-updates InRelease
+Hit:6 https://pkg.jenkins.io/debian binary/ Release
+Hit:7 http://us.archive.ubuntu.com/ubuntu focal-backports InRelease
+Get:8 https://deb.nodesource.com/node_22.x nodistro/main amd64 Packages [5,636 B]
+Fetched 17.8 kB in 6s (2,913 B/s)
+Reading package lists...
+[1;34m2025-03-31 12:44:37 - Repository configured successfully.[0m
+[38;5;79m2025-03-31 12:44:37 - To install Node.js, run: apt-get install nodejs -y[0m
+[38;5;79m2025-03-31 12:44:37 - You can use N|solid Runtime as a node.js alternative[0m
+[1;32m2025-03-31 12:44:37 - To install N|solid Runtime, run: apt-get install nsolid -y 
+[0m
++ sudo apt-get install -y nodejs
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages were automatically installed and are no longer required:
+  gyp libc-ares2 libjs-inherits libjs-is-typedarray libjs-psl
+  libjs-typedarray-to-buffer libpython2-stdlib libpython2.7-minimal
+  libpython2.7-stdlib libssl-dev libuv1-dev node-abbrev node-ajv node-ansi
+  node-ansi-align node-ansi-regex node-ansi-styles node-ansistyles node-aproba
+  node-archy node-are-we-there-yet node-asap node-asn1 node-assert-plus
+  node-asynckit node-aws-sign2 node-aws4 node-balanced-match node-bcrypt-pbkdf
+  node-bl node-bluebird node-boxen node-brace-expansion node-builtin-modules
+  node-builtins node-cacache node-call-limit node-camelcase node-caseless
+  node-chalk node-chownr node-ci-info node-cli-boxes node-cliui node-clone
+  node-co node-color-convert node-color-name node-colors node-columnify
+  node-combined-stream node-concat-map node-concat-stream node-config-chain
+  node-configstore node-console-control-strings node-copy-concurrently
+  node-core-util-is node-cross-spawn node-crypto-random-string node-cyclist
+  node-dashdash node-debug node-decamelize node-decompress-response
+  node-deep-extend node-defaults node-define-properties node-delayed-stream
+  node-delegates node-detect-indent node-detect-newline node-dot-prop
+  node-duplexer3 node-duplexify node-ecc-jsbn node-editor node-encoding
+  node-end-of-stream node-err-code node-errno node-es6-promise
+  node-escape-string-regexp node-execa node-extend node-extsprintf
+  node-fast-deep-equal node-find-up node-flush-write-stream node-forever-agent
+  node-form-data node-from2 node-fs-vacuum node-fs-write-stream-atomic
+  node-fs.realpath node-function-bind node-gauge node-genfun
+  node-get-caller-file node-get-stream node-getpass node-glob node-got
+  node-graceful-fs node-har-schema node-har-validator node-has-flag
+  node-has-symbol-support-x node-has-to-string-tag-x node-has-unicode
+  node-hosted-git-info node-http-signature node-iconv-lite node-iferr
+  node-import-lazy node-imurmurhash node-inflight node-inherits node-ini
+  node-invert-kv node-ip node-ip-regex node-is-npm node-is-obj node-is-object
+  node-is-path-inside node-is-plain-obj node-is-retry-allowed node-is-stream
+  node-is-typedarray node-isarray node-isexe node-isstream node-isurl
+  node-jsbn node-json-parse-better-errors node-json-schema
+  node-json-schema-traverse node-json-stable-stringify
+  node-json-stringify-safe node-jsonify node-jsonparse node-jsonstream
+  node-jsprim node-latest-version node-lazy-property node-lcid node-libnpx
+  node-locate-path node-lockfile node-lodash node-lodash-packages
+  node-lowercase-keys node-lru-cache node-make-dir node-mem node-mime
+  node-mime-types node-mimic-fn node-mimic-response node-minimatch
+  node-minimist node-mississippi node-mkdirp node-move-concurrently node-ms
+  node-mute-stream node-nopt node-normalize-package-data node-npm-bundled
+  node-npm-package-arg node-npm-run-path node-npmlog node-number-is-nan
+  node-oauth-sign node-object-assign node-once node-opener node-os-locale
+  node-os-tmpdir node-osenv node-p-cancelable node-p-finally node-p-is-promise
+  node-p-limit node-p-locate node-p-timeout node-package-json
+  node-parallel-transform node-path-exists node-path-is-absolute
+  node-path-is-inside node-performance-now node-pify node-prepend-http
+  node-process-nextick-args node-promise-inflight node-promise-retry
+  node-promzard node-proto-list node-prr node-pseudomap node-psl node-pump
+  node-pumpify node-punycode node-qs node-qw node-rc node-read
+  node-read-package-json node-readable-stream node-registry-auth-token
+  node-registry-url node-request node-require-directory
+  node-require-main-filename node-resolve node-resolve-from node-retry
+  node-rimraf node-run-queue node-safe-buffer node-semver node-semver-diff
+  node-set-blocking node-sha node-shebang-command node-shebang-regex
+  node-signal-exit node-slash node-slide node-sorted-object node-spdx-correct
+  node-spdx-exceptions node-spdx-expression-parse node-spdx-license-ids
+  node-sshpk node-ssri node-stream-each node-stream-iterate node-stream-shift
+  node-strict-uri-encode node-string-decoder node-string-width node-strip-ansi
+  node-strip-eof node-strip-json-comments node-supports-color node-tar
+  node-term-size node-text-table node-through node-through2 node-timed-out
+  node-tough-cookie node-tunnel-agent node-tweetnacl node-typedarray
+  node-typedarray-to-buffer node-uid-number node-unique-filename
+  node-unique-string node-unpipe node-uri-js node-url-parse-lax
+  node-url-to-options node-util-deprecate node-uuid
+  node-validate-npm-package-license node-validate-npm-package-name node-verror
+  node-wcwidth.js node-which node-which-module node-wide-align
+  node-widest-line node-wrap-ansi node-wrappy node-write-file-atomic
+  node-xdg-basedir node-xtend node-y18n node-yallist node-yargs
+  node-yargs-parser python-pkg-resources python2 python2-minimal python2.7
+  python2.7-minimal
+Use 'sudo apt autoremove' to remove them.
+The following packages will be upgraded:
+  nodejs
+1 upgraded, 0 newly installed, 0 to remove and 496 not upgraded.
+Need to get 36.4 MB of archives.
+After this operation, 35.3 MB of additional disk space will be used.
+Get:1 https://deb.nodesource.com/node_22.x nodistro/main amd64 nodejs amd64 22.14.0-1nodesource1 [36.4 MB]
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+Fetched 36.4 MB in 7s (5,196 kB/s)
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 165409 files and directories currently installed.)
+Preparing to unpack .../nodejs_22.14.0-1nodesource1_amd64.deb ...
+Detected old npm client, removing...
+Unpacking nodejs (22.14.0-1nodesource1) over (18.20.8-1nodesource1) ...
+Setting up nodejs (22.14.0-1nodesource1) ...
+Processing triggers for man-db (2.9.1-1) ...
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] echo
+Building...
+[Pipeline] sh
++ node -v
+v22.14.0
+[Pipeline] sh
++ npm -v
+10.9.2
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] echo
+Running tests...
+[Pipeline] sh
++ echo http://10.0.2.15:8080/
+http://10.0.2.15:8080/
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
