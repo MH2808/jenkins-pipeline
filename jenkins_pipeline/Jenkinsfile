@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Prepare') {
+            steps {
+                echo 'Installing Node.js version 22...'
+                sh 'curl -sL https://deb.nodesource.com/setup_22.x | sudo -E bash -'
+                sh 'sudo apt-get install -y nodejs'
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                echo 'Simulating build process...'
+                sh 'npm --version'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                echo 'Simulating test process...'
+                echo "JENKINS_URL: ${env.JENKINS_URL}"
+            }
+        }
+    }
+}
